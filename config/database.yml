@@ -1,0 +1,14 @@
+production:
+  adapter       : 'sqlite'
+  database      : 'db/production.db'
+  auto_upgrade  : true
+
+development:
+  adapter       : 'sqlite'
+  database      : 'db/development.db'
+  auto_migrate  : true  
+
+test:
+  adapter       : 'sqlite'
+  database      : 'db/test.db'
+  auto_migrate  : true
