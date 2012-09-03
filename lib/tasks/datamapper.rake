@@ -2,7 +2,8 @@ namespace :db do
 	
 	desc 'seed the database'
 	task :seed => :environment do
-		# run factory methods
+		require File.expand_path('../../../db/seed', __FILE__)
+		Database.seed
 	end
 	
 	namespace :auto do
