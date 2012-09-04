@@ -29,8 +29,8 @@ module Database
 			case adapter
 			when 'sqlite'
 				DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/#{database}")
-			when 'postgresql'
-				false
+			when 'postgres'
+				DataMapper.setup(:default, "postgres://#{database}")
 			when 'mysql'
 				false
 			when 'mongodb'

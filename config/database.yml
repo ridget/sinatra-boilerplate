@@ -12,3 +12,8 @@ test:
   adapter       : 'sqlite'
   database      : 'db/test.db'
   auto_migrate  : true
+
+
+# PostgreSQL
+# adapter       : 'postgres'
+# database      : 'localhost/dbname'
