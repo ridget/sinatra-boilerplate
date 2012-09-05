@@ -2,7 +2,7 @@
 # monkey patches Sinatra's logger
 # logger.debug						"trying to connect to mongodb"
 # logger[:database].fatal	"can't connect to mongodb @ 10.10.10.52"
-###
+#
 
 module Sinatra
 	module Helpers

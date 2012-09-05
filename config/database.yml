@@ -1,35 +1,29 @@
 production:
   adapter       : 'sqlite'
-  location      : 'db'
-  database      : 'production.db'
-  auto_upgrade  : true
+  location      : 'db/production.db'
+  auto_upgrade  : 'true'
 
 development:
   adapter       : 'sqlite'
-  location      : 'db'
-  database      : 'development.db'
-  auto_migrate  : true  
+  location      : 'db/development.db'
+  auto_upgrade  : 'true'  
 
 test:
   adapter       : 'sqlite'
-  location      : 'db'
-  database      : 'test.db'
-  auto_migrate  : true
+  location      : 'db/test.db'
+  auto_migrate  : 'true'
 
 
 # PostgreSQL
 # adapter       : 'postgres'
-# location      : 'localhost'
-# database      : 'dbname'
-# auto_migrate  : true
-# auto_upgrade  : true
+# location      : 'localhost/dbname'
+# auto_migrate  : 'true'
+# auto_upgrade  : 'true'
 
 # MongoDB
 # adapter       : 'mongo'
-# location      : 'localhost'
-# database      : 'dbname'
+# location      : 'localhost/dbname'
 
 # MySQL
 # adapter       : 'mysql'
-# location      : 'localhost'
-# database      : 'dbname'
+# location      : 'localhost/dbname'
