@@ -1,40 +1,33 @@
 module Database
 	
-	class Adapter
-		
-		def initialize(config)
-			@adapter	= config['adapter']
-			@database	= config['database']
+	class Client
 			
-			unless setup @adapter, @database
-				puts 'stopping'
+		def self.init
+			unless setup
 				return false
 			end
 			
 			Dir.glob(File.expand_path('../../app/models/**', __FILE__), &method(:require))
 			
-			if config['auto_migrate']
-				@auto_migrate = true
+			if ENV['DB_AUTOMIGRATE']
 				DataMapper.finalize.auto_migrate!
-			elsif config['auto_update']
-				@auto_update = true
+			elsif ENV['DB_AUTOUPGRADE']
 				DataMapper.finalize.auto_upgrade!
 			else
 				DataMapper.finalize
 			end
-			
 		end
 		
-		def setup(adapter, database)
-			case adapter
+		def self.setup
+			case ENV['DB_ADAPTER']
 			when 'sqlite'
-				DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/#{database}")
-			when 'postgresql'
-				false
+				DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/#{ENV['DB_LOCATION']}")
+			when 'postgres'
+				DataMapper.setup(:default, "postgres://#{ENV['DB_LOCATION']}")
 			when 'mysql'
-				false
+				DataMapper.setup(:default, "mysql://#{ENV['DB_LOCATION']}")
 			when 'mongodb'
-				false
+				DataMapper.setup(:default, "mongo://#{ENV['DB_LOCATION']}")
 			else
 				false
 			end
@@ -43,5 +36,4 @@ module Database
 	end
 	
 end
-
-Database::Adapter.new YAML.load_file(File.expand_path('../../config/database.yml', __FILE__))[ENV['RACK_ENV']]
+Database::Client.init

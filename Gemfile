@@ -25,6 +25,7 @@ gem			'dm-sqlite-adapter'
 
 # Memcached
 #gem			'dalli'
+#gem			'kgio'
 
 # Output
 gem			'erubis'
