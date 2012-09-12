@@ -41,5 +41,6 @@ group :test do
 	# Testing
 	gem		'rspec'
 #	gem		'dm-rspec'
+	gem		'nyan-cat-formatter'
 	gem		'rack-test',			:require => 'rack/test'
 end

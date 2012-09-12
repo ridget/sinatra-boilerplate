@@ -3,3 +3,4 @@
 --tty
 --color
 --backtrace
+--format NyanCatMusicFormatter
