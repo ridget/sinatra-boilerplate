@@ -1,5 +1,6 @@
 --require	spec_helper
---format progress
---loadby mtime
---reverse
---format profile:doc/profile.txt
+--profile
+--tty
+--color
+--backtrace
+--format NyanCatMusicFormatter
