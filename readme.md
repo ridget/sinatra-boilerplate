@@ -1,5 +1,7 @@
 #	Sinatra Boilerplate
 
+[![Build Status](https://secure.travis-ci.org/theidealab/sinatra-boilerplate.png)](http://travis-ci.org/theidealab/sinatra-boilerplate)
+
 Sinatra, Datamapper, and Rspec in an easy to use template.
 
 ##	Getting Started
