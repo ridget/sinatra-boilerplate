@@ -1,20 +1,26 @@
-require 'rspec/core/rake_task'
-
 namespace :spec do
 	
-	desc 'run all specifications'
-	RSpec::Core::RakeTask.new(:all) do |test|
-  	test.pattern = "./spec/**/*_spec.rb"
+	task :all => :rspec do
+		RSpec::Core::RakeTask.new do |test|
+  		test.pattern = "./spec/**/*_spec.rb"
+		end
 	end
 	
 	desc 'run models specifications'
-	RSpec::Core::RakeTask.new(:models) do |test|
-		test.pattern = "./spec/**/models/*_spec.rb"
+	task :models => :rspec do
+		RSpec::Core::RakeTask.new do |test|
+			test.pattern = "./spec/**/models/*_spec.rb"
+		end
 	end
 	
 	desc 'run app specifications'
-	RSpec::Core::RakeTask.new(:app) do |test|
-		test.pattern = "./spec/**/app/*_spec.rb"
+	task :app => :rspec do
+		RSpec::Core::RakeTask.new do |test|
+			test.pattern = "./spec/**/app/*_spec.rb"
+		end
 	end
 	
 end
+
+desc 'run all specifications'
+task :spec => 'spec:all'
