@@ -18,7 +18,7 @@ Add your own remote
 
 	git remote add origin git@github.com:my_org/my_repo.git
 
-Start working~
+Start working, and modify `lib/tasks/setup.rake` to include tasks needed to setup your application when cloning.
 
 ##	Structure
 
@@ -51,5 +51,3 @@ RSpec tests for the application and models.
 
 ###	`vendor/assets/{coffee, scss, etc}`
 Third party assets used in the application.
-
-

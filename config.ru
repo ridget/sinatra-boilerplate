@@ -2,4 +2,4 @@
 # encoding: utf-8
 
 require File.expand_path("../config/boot", __FILE__)
-run SinatraBoilerplate::App
+run Application::App
