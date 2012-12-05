@@ -1,4 +1,4 @@
-module SinatraBoilerplate
+module Application
 	
 	class App < Sinatra::Base
 		
