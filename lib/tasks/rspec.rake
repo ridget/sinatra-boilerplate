@@ -8,6 +8,11 @@ namespace :spec do
 	 	test.pattern = "./spec/**/*_spec.rb"
 	end
 
+	desc 'run helpers specifications'
+	RSpec::Core::RakeTask.new(:helpers) do |test|
+		test.pattern = "./spec/**/helpers/*_spec.rb"
+	end
+
 	desc 'run models specifications'
 	RSpec::Core::RakeTask.new(:models) do |test|
 		test.pattern = "./spec/**/models/*_spec.rb"
