@@ -24,7 +24,7 @@ module Sinatra
 			when nil
 				''
 			else
-				file.to_s + '.js'
+				'/' << file.to_s << '.js'
 			end
 		end
 
