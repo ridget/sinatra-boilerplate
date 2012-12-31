@@ -13,6 +13,9 @@ GEM
       dm-core (~> 1.2.0)
     dm-migrations (1.2.0)
       dm-core (~> 1.2.0)
+    dm-rspec (0.2.3)
+      dm-core
+      dm-validations
     dm-sqlite-adapter (1.2.0)
       dm-do-adapter (~> 1.2.0)
       do_sqlite3 (~> 0.10.6)
@@ -58,6 +61,7 @@ DEPENDENCIES
   bcrypt-ruby
   dm-core
   dm-migrations
+  dm-rspec
   dm-sqlite-adapter
   dm-timestamps
   dm-validations
