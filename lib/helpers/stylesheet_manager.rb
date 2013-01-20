@@ -1,51 +1,27 @@
-###
-# StylesheetManager
-#
-# manages lists of stylesheets with adds css and stylesheets methods
-#
-# app		- css :'app/public.css'
-# view	- <%= stylesheets %>
+module Application
+	module Helpers
+		
+		class StylesheetsManager < AssetManager
 
-module Sinatra
-	class StylesheetManager < Sinatra::AssetManager
+			private
 
-		private
-
-		def config_files
-			[]
-		end
-
-		def format file
-			"<link rel='stylesheet' type='text/css' href='#{path_to file}'>"
-		end
-
-		def path_to file
-			case file
-			when nil
-				''
-			else
-				'/' << file.to_s << '.css'
+			def format file
+				"\n<link rel='stylesheet' href='#{path_to file}' type='text/css' media='screen' charset='utf-8'>"
 			end
-		end
 
+			def format_as_internal file
+				"/stylesheets/#{file}.css"
+			end
+
+		end
 	end
 end
 
 module Sinatra
 	module Helpers
 
-		def css *files
-			stylesheet_manager.add_files files
-		end
-
-		def stylesheets *files
-			stylesheet_manager.list_files files
-		end
-
-		private
-
-		def stylesheet_manager
-			@stylesheet_manager ||= Sinatra::StylesheetManager.new
+		def stylesheets
+			@stylesheets ||= Application::Helpers::StylesheetsManager.new('stylesheets')
 		end
 
 	end

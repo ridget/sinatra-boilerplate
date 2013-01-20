@@ -1,40 +1,58 @@
-###
-# Asset Manager
-#
-# create specific asset managers in lib/helpers by subclassing Sinatra::AssetManager
-# and monkey patching config_settings, format, and path_to
-#
-# to take advantage of helper methods, also define methods for the particular manager
-# a method to add_files, and a helper to list_files
-#
+module Application
+	module Helpers
+		class AssetManager
 
-module Sinatra
-	class AssetManager
+			def initialize(config_file = nil)
+				assets << get_assets_from_config(config_file)
+			end
 
-		def add_files *files
-			@files ||= []
-			@files = files
+			def assets
+				@assets ||= []
+			end
+
+			def add *files
+				assets << files
+			end
+
+			def render *files
+				(@assets << files).flatten.uniq.map { |file| format file }.join
+			end
+
+			private
+
+			def path_to file
+				if is_external? file
+					format_as_external file
+				else
+					format_as_internal file
+				end
+			end
+
+			def is_external? file
+				file =~ %r{^external/}
+			end
+
+			def format_as_internal file
+				file
+			end
+
+			def format_as_external file
+				file.sub(%r{external/},'')
+			end
+
+			def format file
+				"#{file}"
+			end
+
+			def load_config path
+				(path && YAML.load_file(File.expand_path("../../../config/#{path}.yml", __FILE__))) || []
+			end
+
+			def get_assets_from_config path
+				load_config(path).map{ |dir,files| files.map {|file| "#{dir}/#{file}"}}.flatten
+			end
+
 		end
-
-		def list_files *files
-			(@files + files + config_files).flatten.uniq.map do |file|
-				format file
-			end.join
-		end
-
-		private
-
-		def config_files
-			[]
-		end
-
-		def format file
-			"#{path_to file}"
-		end
-
-		def path_to file
-			"#{file}"
-		end
-
 	end
 end
+
