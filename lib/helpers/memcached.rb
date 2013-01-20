@@ -6,23 +6,58 @@
 # if a memcached server doesn't exist / isn't found emulates Dalli's functionality with empty methods
 #
 
+module Application
+	module Helpers
+
+		class Memcached
+
+			def set (key, value)
+				client.set(key, value)
+			end
+
+			def get (key)
+				client.get(key)
+			end
+
+			def delete (key)
+				client.delete(key)
+			end
+
+			def client
+				return @client if @client
+				begin
+					@client = Dalli::Client.new ENV['MEMCACHED_LOCATION']
+					@client.get 'test_key'
+					@client
+				rescue
+					@client = NilMemcached.new
+				end
+			end
+			
+		end
+
+		class NilMemcached
+			def set (key, value)
+				nil
+			end
+			
+			def get (key)
+				nil
+			end
+
+			def delete (key)
+				nil
+			end
+		end
+
+	end
+end
+
 module Sinatra
 	module Helpers
 		
 		def memcached
-			if ENV['MEMCACHED_LOCATION']
-				@memcached_client ||= Dalli::Client.new ENV['MEMCACHED_LOCATION']
-			else
-				@memcached_client ||= Class.new do
-					def self.set (key, value)
-						nil
-					end
-					
-					def self.get (key)
-						nil
-					end
-				end
-			end
+			@memcached_client ||= Application::Helpers::Memcached.new
 		end
 		
 	end
