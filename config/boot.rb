@@ -30,3 +30,5 @@ ENV['DB_AUTOUPGRADE']	= db_config['auto_upgrade']
 
 require File.expand_path("../application", __FILE__)
 require File.expand_path("../database", __FILE__)
+
+require File.expand_path("../../lib/helpers/asset_manager", __FILE__)
