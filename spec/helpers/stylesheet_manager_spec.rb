@@ -1,17 +1,24 @@
-describe Sinatra::StylesheetManager do
-	
-	let(:manager){
-		Sinatra::StylesheetManager.new
+describe Application::Helpers::StylesheetsManager do
+	let(:stylesheets) {
+		Application::Helpers::StylesheetsManager.new
 	}
+	
+	describe 'formats stylesheets correctly' do
 
-	context 'with single file' do
-		before { manager.add_files :one }
-		specify { manager.list_files.should eql "<link rel='stylesheet' type='text/css' href='/one.css'>" }
-	end
+		context 'with an internal file' do
+			before do
+				stylesheets.add 'dir_1/file_1'
+			end
+			specify { stylesheets.render.should eq "\n<link rel='stylesheet' href='/stylesheets/dir_1/file_1.css' type='text/css' media='screen' charset='utf-8'>" }
+		end
 
-	context 'with multiple files' do
-		before { manager.add_files :one, :two }
-		specify { manager.list_files.should eql "<link rel='stylesheet' type='text/css' href='/one.css'><link rel='stylesheet' type='text/css' href='/two.css'>" }
+		context 'with an external file' do
+			before do
+				stylesheets.add 'external/http://static.jquery.com/files/rocker/css/screen.css'
+			end
+			specify { stylesheets.render.should eq "\n<link rel='stylesheet' href='http://static.jquery.com/files/rocker/css/screen.css' type='text/css' media='screen' charset='utf-8'>" }
+		end
+
 	end
 
 end
