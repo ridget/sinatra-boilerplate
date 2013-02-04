@@ -1,4 +1,5 @@
-#	Sinatra Boilerplate
+#	Ensemble
+## An application boilerplate using Sinatra
 
 [![Build Status](https://secure.travis-ci.org/theidealab/sinatra-boilerplate.png)](http://travis-ci.org/theidealab/sinatra-boilerplate)
 [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/theidealab/sinatra-boilerplate)
