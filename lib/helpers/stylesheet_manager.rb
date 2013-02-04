@@ -1,6 +1,6 @@
-module Application
+module Ensemble
 	module Helpers
-		
+
 		class StylesheetsManager < AssetManager
 
 			private
@@ -21,7 +21,7 @@ module Sinatra
 	module Helpers
 
 		def stylesheets
-			@stylesheets ||= Application::Helpers::StylesheetsManager.new('stylesheets')
+			@stylesheets ||= Ensemble::Helpers::StylesheetsManager.new('stylesheets')
 		end
 
 	end

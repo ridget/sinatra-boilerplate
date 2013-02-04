@@ -4,7 +4,7 @@
 # logger[:database].fatal	"can't connect to mongodb @ 10.10.10.52"
 #
 
-module Application
+module Ensemble
 	module Helpers
 
 		class Logger
@@ -25,10 +25,10 @@ end
 
 module Sinatra
 	module Helpers
-		
+
 		def logger(type = :application)
-			(@logger ||= Application::Helpers::Logger.new).logger(type)
+			(@logger ||= Ensemble::Helpers::Logger.new).logger(type)
 		end
-		
+
 	end
 end

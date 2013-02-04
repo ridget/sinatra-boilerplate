@@ -1,6 +1,6 @@
-module Application
+module Ensemble
 	module Helpers
-		
+
 		class JavascriptsManager < AssetManager
 
 			private
@@ -21,7 +21,7 @@ module Sinatra
 	module Helpers
 
 		def javascripts
-			@javascripts ||= Application::Helpers::JavascriptsManager.new('javascripts')
+			@javascripts ||= Ensemble::Helpers::JavascriptsManager.new('javascripts')
 		end
 
 	end

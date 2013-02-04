@@ -1,8 +1,8 @@
-describe Application::Helpers::StylesheetsManager do
+describe Ensemble::Helpers::StylesheetsManager do
 	let(:stylesheets) {
-		Application::Helpers::StylesheetsManager.new
+		Ensemble::Helpers::StylesheetsManager.new
 	}
-	
+
 	describe 'formats stylesheets correctly' do
 
 		context 'with an internal file' do

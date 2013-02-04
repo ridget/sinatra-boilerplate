@@ -1,6 +1,6 @@
-describe Application::Helpers::JavascriptsManager do
+describe Ensemble::Helpers::JavascriptsManager do
 	let(:javascripts) {
-		Application::Helpers::JavascriptsManager.new
+		Ensemble::Helpers::JavascriptsManager.new
 	}
 
 	describe 'formats javascript correctly' do

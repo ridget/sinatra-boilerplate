@@ -6,7 +6,7 @@
 # if a memcached server doesn't exist / isn't found emulates Dalli's functionality with empty methods
 #
 
-module Application
+module Ensemble
 	module Helpers
 
 		class Memcached
@@ -33,14 +33,14 @@ module Application
 					@client = NilMemcached.new
 				end
 			end
-			
+
 		end
 
 		class NilMemcached
 			def set (key, value)
 				nil
 			end
-			
+
 			def get (key)
 				nil
 			end
@@ -55,10 +55,10 @@ end
 
 module Sinatra
 	module Helpers
-		
+
 		def memcached
-			@memcached_client ||= Application::Helpers::Memcached.new
+			@memcached_client ||= Ensemble::Helpers::Memcached.new
 		end
-		
+
 	end
 end

@@ -1,4 +1,4 @@
-ENV['APP_NAME']			||= 'sinatra-boilerplate'
+ENV['APP_NAME']			||= 'ensemble'
 ENV['RACK_ENV']			||= 'development'
 ENV['LOGGER_LEVEL']	||= 'DEBUG'								# DEBUG, INFO, WARN, ERROR, FATAL
 

@@ -1,4 +1,4 @@
-module Application
+module Ensemble
 	module Helpers
 		class AssetManager
 

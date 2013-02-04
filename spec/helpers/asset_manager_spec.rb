@@ -1,21 +1,21 @@
-describe Application::Helpers::AssetManager do
+describe Ensemble::Helpers::AssetManager do
 
 	let(:asset_manager) {
 
-		Application::Helpers::AssetManager.new
+		Ensemble::Helpers::AssetManager.new
 	}
 
 	describe 'adding via configuration file' do
 		context 'with 0 arguments' do
 			before do
-				Application::Helpers::AssetManager.any_instance.stub(:load_config).and_return({})
+				Ensemble::Helpers::AssetManager.any_instance.stub(:load_config).and_return({})
 			end
 			specify { asset_manager.render.should eq '' }
 		end
 
 		context 'with multiple categories, and multiple children' do
 			before do
-				Application::Helpers::AssetManager.any_instance.stub(:load_config).and_return({
+				Ensemble::Helpers::AssetManager.any_instance.stub(:load_config).and_return({
 					'dir_1' => ['file_1', 'file_2'],
 					'dir_2' => ['file_3', 'file_4'],
 				})
